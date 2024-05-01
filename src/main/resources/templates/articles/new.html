@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layouts/default_layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" th:src="@{/js/check.js}"></script>
 </head>
 <body>
 <div class="content" layout:fragment="content">
-    <form class="container" method="post" th:object="${dto}">
+    <form id="frm" name="frm" class="container" method="post" th:object="${dto}">
         <div class="mb3">
             <label class="form-label">제목</label>
-            <input type="text" class="form-control" th:field="*{title}">
+            <input id="title" name="title" type="text" class="form-control" th:field="*{title}">
         </div>
         <div class="mb3">
             <label class="form-label">내용</label>
-            <textarea class="form-control" row="3" th:field="*{content}"></textarea>
+            <textarea id="contents" name="contents" class="form-control" row="3" th:field="*{content}"></textarea>
         </div>
-        <input type="submit" value="저장" class="btn btn-primary">
+        <input type="button" value="저장" class="btn btn-primary" onclick="check()">
+        <input type="button" value="다시" class="btn btn-primary" onclick="res()">
         <a href="/">Back</a>
     </form>
 </div>
