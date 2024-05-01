@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" th:src="@{/js/check.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/js/check.js}"></script>-->
 </head>
 <body>
 <div class="content" layout:fragment="content">
@@ -37,7 +37,7 @@
             <input  id="nickname" name="nickname" type="text"
                     class="form-control" th:field="*{nickname}">
         </div>
-        <input type="button" value="회원가입" class="btn btn-primary" onclick="check()">
+        <input type="submit" value="회원가입" class="btn btn-primary" >
         <input type="button" value="다시" class="btn btn-primary" onclick="res()">
     </form>
 </div>
