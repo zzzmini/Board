@@ -16,18 +16,24 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/articles/paging}">Paging List</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        ADMIN 권한이 있습니다.
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item" sec:authorize="hasRole('USER')">
+                        USER 권한이 있습니다.
                     </li>
                 </ul>
             </div>
             <div class="text-end">
-                <a role="button" id="signup" class="btn btn-outline-primary" th:href="@{/user/signup}">회원가입</a>
-                <a role="button" id="login" class="btn btn-outline-primary" th:href="@{/user/login}">Login</a>
-                <a role="button" id="logout" class="btn btn-outline-primary" th:href="@{/logout}">Logout</a>
+                <a role="button" id="signup" class="btn btn-outline-primary"
+                   sec:authorize="isAnonymous()"
+                   th:href="@{/user/signup}">회원가입</a>
+                <a role="button" id="login" class="btn btn-outline-primary"
+                   sec:authorize="isAnonymous()"
+                   th:href="@{/user/login}">Login</a>
+                <a role="button" id="logout" class="btn btn-outline-primary"
+                   sec:authorize="isAuthenticated()"
+                   th:href="@{/logout}">Logout</a>
             </div>
         </div>
     </nav>
