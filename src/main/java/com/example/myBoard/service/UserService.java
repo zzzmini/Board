@@ -22,8 +22,8 @@ public class UserService {
     @Transactional
     public void createUser(UserCreateForm userCreateForm) {
         UserAccount account = new UserAccount();
-        account.setUserId(userCreateForm.getUsername());
-        account.setUserPassword(passwordEncoder.encode(
+        account.setUsername(userCreateForm.getUsername());
+        account.setPassword(passwordEncoder.encode(
                 userCreateForm.getPassword1()
         ));
         account.setEmail(userCreateForm.getEmail());

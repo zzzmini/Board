@@ -23,4 +23,6 @@ public class UserCreateForm {
     @NotEmpty(message = "이메일은 필수 입니다.")
     private String email;
     private String nickname;
+    private String provider;
+    private String providerId;
 }

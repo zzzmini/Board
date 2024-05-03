@@ -1,5 +1,7 @@
 package com.example.myBoard.config;
 
+import com.example.myBoard.service.PrincipalOauth2UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +13,8 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    @Autowired
+    private PrincipalOauth2UserService principalOauth2UserService;
     @Bean
     AuthenticationFailureHandler authenticationFailureHandler(){
         return new CustomAuthFailureHandler();
@@ -39,6 +43,16 @@ public class SecurityConfig {
                 .logout(out->out
                         .logoutSuccessUrl("/")
                         .logoutUrl("/logout"))
+<<<<<<< HEAD
+=======
+
+                .oauth2Login(oAuth->oAuth
+                        .loginPage("/user/login")
+                        .defaultSuccessUrl("/")
+                        .userInfoEndpoint(userInfo->
+                                userInfo.userService(principalOauth2UserService)))
+
+>>>>>>> f4545c3 (#.OAuth2)
                 .csrf(csrf -> csrf.disable());
         return http.build();
     }
